@@ -15,6 +15,7 @@
 // QUESTIONS : Quel identifiant correspond au catalogue ? Au prix total ?
 // TODO : créez ici des constantes explicites pour les éléments nécessaires.
 // ÉCRIVEZ VOTRE CODE ICI :
+const element = document.getElementById("films-container")
 
 
 // ==================================================
@@ -41,6 +42,27 @@
 // ÉCRIVEZ VOTRE CODE ICI :
 
 
+films.forEach((film) => {
+    element.innerHTML += 
+    `<article class="overflow-hidden rounded-2xl border border-red-400 bg-white shadow-xl ring-2 ring-red-100" data-film-id="${film.id}">
+          <div class="relative"><img src="${film.affiche}" alt="${film.description}"class="aspect-[2/3] w-full object-cover">
+          <span class="absolute bottom-3 right-3 rounded-full bg-white/95 px-3 py-1 text-xs font-extrabold shadow-lg">
+           ${film.prix} DH</span></div>
+          <div class="p-4"><p class="text-xs font-bold uppercase tracking-wider text-cine-red">${film.genre}</p>
+          <h3 class="mt-1 text-lg font-black">${film.titre}</h3><p class="mt-2 text-sm text-slate-500">${filmduree(film)}</p>
+          <button type="button" class="button mt-4 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 font-extrabold text-slate-700" >Choisir ce film</button></div>
+        </article>`
+
+})
+
+function filmduree(film){
+    let s = film.duree % 60
+    let h = Math.floor(film.duree/60)
+    
+    return h+"h"+s+"min";
+}
+
+
 // ==================================================
 // US02 - SÉLECTIONNER UN FILM
 // ==================================================
@@ -52,6 +74,8 @@
 // PISTE : un changement de film doit aussi réinitialiser séance et sièges.
 // MODÈLE : #film-details contient déjà un exemple de détail à reproduire.
 // ÉCRIVEZ VOTRE CODE ICI :
+
+
 
 
 // ==================================================
