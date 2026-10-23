@@ -16,7 +16,7 @@
 // TODO : créez ici des constantes explicites pour les éléments nécessaires.
 // ÉCRIVEZ VOTRE CODE ICI :
 const element = document.getElementById("films-container")
-
+const element1 = document.getElementById("film-details")
 
 // ==================================================
 // 0 BIS - MÉMORISER L'ÉTAT DE L'APPLICATION
@@ -50,7 +50,7 @@ films.forEach((film) => {
            ${film.prix} DH</span></div>
           <div class="p-4"><p class="text-xs font-bold uppercase tracking-wider text-cine-red">${film.genre}</p>
           <h3 class="mt-1 text-lg font-black">${film.titre}</h3><p class="mt-2 text-sm text-slate-500">${filmduree(film)}</p>
-          <button type="button" class="button mt-4 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 font-extrabold text-slate-700" >Choisir ce film</button></div>
+          <button type="button" class="button mt-4 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 font-extrabold text-slate-700" id=${film.id} >Choisir ce film</button></div>
         </article>`
 
 })
@@ -75,10 +75,33 @@ function filmduree(film){
 // MODÈLE : #film-details contient déjà un exemple de détail à reproduire.
 // ÉCRIVEZ VOTRE CODE ICI :
 
+const buttons = document.querySelectorAll(".button");
+buttons.forEach( clickbtn =>{
+       clickbtn.addEventListener("click", () =>{
+            if(clickbtn.textContent == "Sélectionné"){
+                clickbtn.textContent = "Choisir ce film";
+                clickbtn.style.backgroundColor = '#F8FAFC';
+            }
+            else{
+                clickbtn.textContent = "Sélectionné"
+                clickbtn.style.backgroundColor = '#E63946';
+            }
+            
+        })     
+})
+
+
+films.forEach((film) => {
+    element1.innerHTML =
+    `<img src="${film.affiche}" alt="${film.description}" class="aspect-[2/3] w-24 rounded-xl object-cover shadow-md">
+        <div><div class="flex flex-wrap items-center gap-2"><h3 class="text-xl font-black">${film.titre}</h3><span class="rounded-full bg-red-100 px-3 py-1 text-xs font-bold text-red-700">${film.prix} DH</span></div><p class="mt-2 text-sm font-semibold text-slate-500">${film.genre} · ${filmduree(film)}</p><p class="mt-3 leading-7 text-slate-600">${film.description}</p></div>`
+})
+
+ 
 
 
 
-// ==================================================
+// ================================================== 
 // US03 - AFFICHER LES SÉANCES
 // ==================================================
 // OBJECTIF : afficher les horaires du film sélectionné dans #seances-container.
@@ -146,3 +169,13 @@ function filmduree(film){
 // PREMIER TEST CONSEILLÉ :
 // console.log(films);
 // Décommentez temporairement cette ligne pour explorer les données, puis avancez.
+
+
+
+
+
+
+
+
+
+
